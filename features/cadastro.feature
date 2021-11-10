@@ -9,22 +9,22 @@ Funcionalidade: Cadastro
     Cenario: Fazer cadastro
         Dado que acesso a página de cadastro
         Quando submeto o seguinte formulario de cadastro:
-            |nome      |email        |senha    |
-            |joao pedro|joe@gmail.com|jp123456 |
+            | nome       | email         | senha    |
+            | joao pedro | joe@gmail.com | jp123456 |
         Então sou redirecionado para o Dashboard
 
     Esquema do Cenario: Tentativa de Cadastro
 
         Dado que acesso a página de cadastro
         Quando submeto o seguinte formulario de cadastro:
-            |nome        |email        |senha        |
-            |<nome_input>|<email_input>|<senha_input>|
+            | nome         | email         | senha         |
+            | <nome_input> | <email_input> | <senha_input> |
         Então vejo a mensagem de alerta: "<mensagem_output>"
 
         Exemplos:
-        |nome_input|email_input   |senha_input|mensagem_output                  |
-        |          |joe@gmail.com |jp123456   |Oops. Informe seu nome completo! |
-        |Joao Pedro|              |pwd123     |Oops. Informe um email válido!   |
-        |Joao Pedro|joe#*gmail.com|pwd123     |Oops. Informe um email válido!   |
-        |Joao Pedro|joe?gmail.com |pwd123     |Oops. Informe um email válido!   |
-        |Joao Pedro|joe@gmail.com |           |Oops. Informe sua senha secreta! |
+            | nome_input | email_input    | senha_input | mensagem_output                  |
+            |            | joe@gmail.com  | jp123456    | Oops. Informe seu nome completo! |
+            | Joao Pedro |                | pwd123      | Oops. Informe um email válido!   |
+            | Joao Pedro | joe#*gmail.com | pwd123      | Oops. Informe um email válido!   |
+            | Joao Pedro | joe?gmail.com  | pwd123      | Oops. Informe um email válido!   |
+            | Joao Pedro | joe@gmail.com  |             | Oops. Informe sua senha secreta! |

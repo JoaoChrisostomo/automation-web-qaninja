@@ -5,10 +5,11 @@ Funcionalidade: Login
     Quero acessar o sistema da Rocklov
     Para que eu possa anunciar meus equipamentos musicais
 
+    @temp
     Cenario: Login do usuário
 
         Dado que acesso a página principal
-        Quando submeto minhas credenciais válidas
+        Quando submeto minhas credenciais com  "joe@gmail.com" e "jp123456"
         Então sou redirecionado para o Dashboard
 
     Cenario: Senha incorreta

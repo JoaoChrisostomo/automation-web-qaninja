@@ -9,35 +9,20 @@ Funcionalidade: Login
     Cenario: Login do usuário
 
         Dado que acesso a página principal
-        Quando submeto minhas credenciais com  "joe@gmail.com" e "jp123456"
+        Quando submeto minhas credenciais com  "juca@gmail.com" e "1234"
         Então sou redirecionado para o Dashboard
 
+    @tentar_logar
     Cenario: Senha incorreta
 
         Dado que acesso a página principal
-        Quando submeto minhas credenciais com senha incorreta
-        Então vejo a mensagem de alerta: Usuário e/ou senha inválidos.
+        Quando submeto minhas credenciais com  "<email_input>" e "<senha_input>"
+        Então vejo a mensagem de alerta: "<mensagem_output>"
 
-    Cenário: Email não cadastrado
-
-        Dado que acesso a página principal
-        Quando submeto minhas credenciais com email que não existe na Rocklov
-        Então vejo a mensagem de alerta: Usuário e/ou senha inválidos.
-
-    Cenario: Email incorreto
-
-        Dado que acesso a página principal
-        Quando submeto minhas credenciais com email incorreto
-        Então vejo a mensagem de alerta: Oops. Informe um email válido!
-
-    Cenario: Email não informado
-
-        Dado que acesso a página principal
-        Quando submeto minhas credenciais sem o email
-        Então vejo a mensagem de alerta: Oops. Informe um email válido!
-
-    Cenario: Senha não informada
-
-        Dado que acesso a página principal
-        Quando submeto minhas credenciais sem a senha
-        Então vejo a mensagem de alerta: ops. Informe sua senha secreta!
+        Exemplos:
+            | email_input      | senha_input | mensagem_output                  |
+            | juca@gmail.com   | 12345       | Usuário e/ou senha inválidos.    |
+            | jucas@gmail.com  | 1234        | Usuário e/ou senha inválidos.    |
+            | joe$uhugmail.com | jp123456    | Oops. Informe um email válido!   |
+            |                  | jp123456    | Oops. Informe um email válido!   |
+            | joe@gmail.com    |             | Oops. Informe sua senha secreta! |

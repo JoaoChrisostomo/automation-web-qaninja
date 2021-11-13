@@ -5,6 +5,7 @@ Funcionalidade: Cadastro de Anúncios
   Quero Cadastrar meus equipamentos
   Para que possa ser disponibilizados para localção de equipamentos
 
+  @cadastro_anuncios
   Cenário: Novo equipo
     Dado que estou logado como "bond@gmail.com" e "123"
       E que acesso o formulario de cadastro de anúncios

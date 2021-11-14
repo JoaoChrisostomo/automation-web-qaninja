@@ -20,6 +20,7 @@ class EquiposPage
 
   def upload(file_name)
     thumb = Dir.pwd + "/features/support/fixtures/images/" + file_name
+    thumb = thumb.tr("/", "\\") if OS.windows?
 
     find("#thumbnail input[type=file]", visible: false).set thumb
   end

@@ -1,36 +1,27 @@
-Dado('que estou logado como {string} e {string}') do |email, password|
+Dado('Login com {string} e {string}') do |email, password|
     @email = email
     @login_page.open
     @login_page.with(email, password)
 end
 
 Dado('que acesso o formulario de cadastro de anúncios') do
-    click_button "Criar anúncio"
-    expect(page).to have_css "#equipoForm"
+    @dash_page.goto_equipo_form
 end
 
 Dado('que eu tenha o seguinte equipamento:') do |table|
     @anuncio = table.rows_hash
-
     MongoDB.new.remove_equipo(@anuncio[:nome], @email)
 end
 
 Quando('submeto o cadastro desse item') do
-
-    thumb = Dir.pwd + "/features/support/fixtures/images/" + @anuncio[:thumb]
-
-    find("#thumbnail input[type=file]", visible: false).set thumb
-
-    find("input[placeholder$=equipamento]").set @anuncio[:nome]
-    find("#category").find('option', text: @anuncio[:category]).select_option
-    find("input[placeholder^=Valor]").set @anuncio[:preco]
-
-    click_button "Cadastrar"
+    @equipos_page.create(@anuncio)
 end
 
 Então('devo ver esse item no meu Dashboard') do
-    sleep 10 # Temporario
-    anuncios = find(".equipo-list")
-    expect(anuncios).to have_content @anuncio[:nome]
-    expect(anuncios).to have_content "R$#{@anuncio[:preco]}/dia"
+    expect(@dash_page.equipo_list).to have_content @anuncio[:nome]
+    expect(@dash_page.equipo_list).to have_content "R$#{@anuncio[:preco]}/dia"
+end
+
+Então('deve conter  mensagem de alerta: {string}') do |expect_alert|
+    expect(@alert.dark).to have_text expect_alert
 end

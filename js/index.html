@@ -1,0 +1,191 @@
+    <!DOCTYPE html>
+
+    <html>
+    
+    <head>
+    
+      <title>WebBase from QA Ninja</title>
+    
+      <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    
+    </head>
+    
+    <body>
+    
+      <div id="app">
+    
+        <h1>Cadastro de Alunos</h1>
+    
+        <form>
+    
+          <label for="nomeCompleto">Nome Completo</label>
+    
+          <input name="nomeCompleto" type="texto" v-model="form.nome">
+    
+          <label for="email">Email</label>
+    
+          <input name="email" type="texto" v-model="form.email">
+    
+          <label for="nota">Nota</label>
+    
+          <input name="nota" type="texto" v-model="form.nota">
+    
+          <input type="button" value="Cadastrar" @click="adicionarAluno">
+    
+        </form>
+    
+        <div>
+    
+          <table class="table">
+    
+            <thead>
+    
+              <th>Nome</th>
+    
+              <th>Email</th>
+    
+              <th>Nota</th>
+
+              <th>Ações</th>
+    
+            </thead>
+    
+            <tbody>
+    
+              <tr v-for="aluno in alunos">
+    
+                <td>{{aluno.nome}}</td>
+    
+                <td>{{aluno.email}}</td>
+    
+                <td>{{aluno.nota}}</td>
+                <td>
+                  <button class="danger" @click="apagarAluno(aluno)">Apagar</button>
+                </td>
+    
+              </tr>
+    
+            </tbody>
+    
+          </table>
+    
+        </div>
+    
+      </div>  
+    
+      <script>
+          var app = new Vue({
+    
+            el: "#app",
+    
+            data: {
+                form:{
+                  nome: '', 
+                  email: '',
+                  nota: ''
+                },
+              alunos: [ 
+                { nome: 'Joao Pedro', email: 'pedro@gmail.com', nota: 10 }
+              ] 
+    
+            },
+            methods: {
+                limparFormulario: function() {
+                    this.form = {
+                      nome: '', 
+                      email: '',
+                      nota: ''
+                    }
+                },
+                adicionarAluno: function() {
+                    // console.log(this.form)
+                    this.alunos.push(this.form)
+                    this.limparFormulario()
+                },
+                apagarAluno: function(aluno) {
+                  var posicao = this.alunos.indexOf(aluno)
+                  this.alunos.splice(posicao, 1)
+                }
+            }
+    
+          })
+    
+      </script>
+    
+      <style>
+          .table { 
+    
+              margin-top: 20px;
+    
+              width: 100%;
+    
+              text-align: left;
+    
+          }
+    
+          .table th, 
+          .table td  {
+            border-top: 1px solid #ccc;
+          }
+
+          .table th:last-child, .table td:last-child {
+            text-align: right;
+          }
+
+          .danger {
+            background-color: #E91E63;
+            border-color: #E91E63;
+            color: #eee
+          }
+    
+        input {
+    
+          display: block;
+    
+        }
+    
+        input[type=button] {
+    
+          background-color: dodgerblue;
+    
+          border-color: dodgerblue;
+    
+          margin-top: 10px;
+
+          color: #eee;
+    
+        }
+    
+      </style>
+    
+    </body>
+    
+    </html>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- <body>
+    
+          <><h1>Aqui vai um titúlo em HTML</h1>
+    
+          <p>Aqui temos um paragráfo bem bonito.</p>
+    
+          </body>
+    
+    </html> -->
+    
+    

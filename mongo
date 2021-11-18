@@ -1,0 +1,7 @@
+# Logfile created on 2021-11-15 00:42:05 -0300 by logger.rb/v1.4.3
+D, [2021-11-15T00:42:05.515924 #21112] DEBUG -- : MONGODB | Topology type 'unknown' initializing.
+D, [2021-11-15T00:42:05.516346 #21112] DEBUG -- : MONGODB | There was a change in the members of the 'Unknown' topology.
+D, [2021-11-15T00:42:05.516549 #21112] DEBUG -- : MONGODB | Server rocklov-db:27017 initializing.
+D, [2021-11-15T00:42:05.516774 #21112] DEBUG -- : MONGODB | Waiting for up to 30.00 seconds for servers to be scanned: #<Cluster topology=Unknown[rocklov-db:27017] servers=[#<Server address=rocklov-db:27017 UNKNOWN>]>
+D, [2021-11-15T00:42:05.535553 #21112] DEBUG -- : MONGODB | Server description for rocklov-db:27017 changed from 'unknown' to 'standalone'.
+D, [2021-11-15T00:42:05.536028 #21112] DEBUG -- : MONGODB | Topology type 'Unknown' changed to type 'Single'.

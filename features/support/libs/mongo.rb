@@ -1,14 +1,21 @@
 require "mongo"
 
 Mongo::Logger.logger = Logger.new("mongo.log")
-
 class MongoDB
   attr_accessor :users, :equipos
 
   def initialize
-    client = Mongo::Client.new(CONFIG["mongo"])
-    @users = client[:users]
-    @equipos = client[:equipos]
+    @client = Mongo::Client.new(CONFIG["mongo"])
+    @users = @client[:users]
+    @equipos = @client[:equipos]
+  end
+
+  def drop_danger
+    @client.database.drop
+  end
+
+  def insert_users(docs)
+    @users.insert_many(docs)
   end
 
   def remove_user(email)

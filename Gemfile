@@ -12,3 +12,4 @@ gem "faker", "2.14"
 gem "mongo", "2.16"
 gem "os"
 gem "webdrivers"
+gem 'httparty', '0.20.0'
